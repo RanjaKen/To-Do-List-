@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Todo from "./components/toDo";
 
 function App(props) { 
     const show = "Show";
@@ -22,22 +23,11 @@ function App(props) {
             </div>
             <div className="taskss">
                 <h1>Tasks remaing </h1>
-                <ul className="lists">
-                    <li>
-                        <input type="checkbox" /> 
-                        <label> Mind Map </label>
-                        <button type="button" className="btnDelete">Delete</button>
-                    </li>
-                    <li>
-                        <input type="checkbox" /> 
-                        <label> Frank Jr </label>
-                        <button type="button" className="btnDelete">Delete</button>
-                    </li>
-                    <li>
-                        <input type="checkbox" /> 
-                        <label> John Max Well </label>
-                        <button type="button" className="btnDelete">Delete</button>
-                    </li>
+                <ul className="lists" role="list" aria-labelledby="list-heading">
+                    <Todo name="John Max Well" id="todo-0"  completed />
+                    <Todo name="Frank Jr" id="todo-1"  />
+                    <Todo name="Mind Map" id="todo-2"  />
+        
                 </ul>
             </div>
         
