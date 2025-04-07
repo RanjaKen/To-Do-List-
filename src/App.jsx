@@ -1,9 +1,23 @@
-import { useState } from "react";
+// import { useState } from "react";
 import Todo from "./components/toDo";
+import Form from "./components/Form";
+import FilterBtn from "./components/FilterButton";
+
+
+
 
 function App(props) { 
-    const show = "Show";
-    const task = "Tasks";
+    
+   
+    const taskList = props.tasks?.map((task) => (
+        <Todo name={task.name} id={task.id}  completed={task.completed} key={task.id} />
+    ));
+
+    const FilterBTN = props.filter?.map((btn) => (
+        <FilterBtn type={btn.type} id={btn.id} phrase={btn.phrase} key={btn.id} />
+    ));
+      
+    
 
 
   return (
@@ -12,22 +26,22 @@ function App(props) {
             <div className="titre">
                 <h1>To DO list, {props.subject} </h1>
             </div>
-            <form action="post">
-                <input type="text" placeholder="Ajouter une tâche" className="input" />
-                <button className="btn">Add</button>
-            </form>
+            <div className="form">
+               <Form />
+                
+            </div> 
             <div className="bouton" id="btn-group-all" aria-pressed="true">
-                <button type="button" id="showAll"> {show} All {task} </button>
-                <button type="button" id="showActive"> {show} Active {task} </button>
-                <button type="button" id="showCompleted"> {show} Completed {task} </button>
+                {FilterBTN}
             </div>
+            
+            
+            
             <div className="taskss">
                 <h1>Tasks remaing </h1>
                 <ul className="lists" role="list" aria-labelledby="list-heading">
-                    <Todo name="John Max Well" id="todo-0"  completed />
-                    <Todo name="Frank Jr" id="todo-1"  />
-                    <Todo name="Mind Map" id="todo-2"  />
-        
+                    
+                    {taskList}
+                    
                 </ul>
             </div>
         
